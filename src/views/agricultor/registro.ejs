@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/img/iconEmp.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/registro.css">
+    <title>AS Colombia</title>
+</head>
+
+<body>
+    <div class="container mt-2 mb-3" style="width: 600px;">
+        <% if (typeof message[0] == "object") { %>
+            <div class="alert alert-danger alert-dismissible fade show container mt-3" id="message">
+                <p><strong>Error al llenar los campos:</strong></p>
+                <ul>
+                <% for (let i=0; i < message.length; i++) { %>
+                    <li><%= message[i].msg %></li>
+                <% } %>
+                </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% } else if (message.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show text-center container mt-3" id="message">
+                <%= message %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% } %>
+    </div>
+    <div class="divRegistro mt-4 mb-3 container">
+        <div class="text-center mt-3 mb-2">
+            <h2><b>Registro</b></h2>
+        </div>
+        <form class="mt-4 container" id="form1" method="POST" action="/index/create">
+            <div class="form-group">
+                <label for="exampleInputName">Nombre Completo</label>
+                <input type="text" class="form-control" id="nombreC" name="nombre_Agricultor" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com"
+                    name="correo_Agricultor" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUser">Usuario</label>
+                <input type="text" class="form-control" id="usuario_Agricultor" name="usuario_Agricultor" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <div class="input-group" id="show_hide_password">
+                    <input class="form-control" type="password" id="contraseña" name="contrasena_Agricultor" required>
+                    <div class="eye1">
+                        <a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="select1">Departamento</label>
+                <select class="custom-select mr-sm-2" id="departamento" name="depart_Agricultor">
+                    <option selected value="0">Seleccione un departamento</option>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <option value='<%= data[i].departamento %>'><%= data[i].departamento %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group" id="ciudadN">
+                <label for="select2">Ciudad</label>
+                <select class="custom-select mr-sm-2" id="ciudad" name="ciudad_Agricultor">
+                    <option selected value="0">Seleccione una ciudad</option>
+                </select>
+            </div>
+            <br>
+            <div class="text-center"><button class="btn btn-success">Enviar</button></div><br>
+        </form>
+    </div>
+    <div class="alert alert-danger container mt-3 mb-3" style="display: none" role="alert" id="errores">
+        <strong class="mb-2">Error al llenar los campos!</strong>
+        <ul id="error" style="margin-top: 0.5em"></ul>
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+<script src="/js/registro.js"></script>
+<script src="/js/verContrasena.js"></script>
+<script>
+    var data = JSON.parse(' <%- JSON.stringify(data) %>'); $('#departamento').change(function () {
+        var newC = "<select class='custom-select mr-sm-2' id='ciudad' name='ciudad_Agricultor' required> \
+            <option selected value='0'>Seleccione una ciudad</option>" ; $("#ciudad").remove(); for (k = 0; k <
+            data.length; k++) {
+                if (data[k].departamento == $(this).val()) {
+                    for (w = 0; w <
+                        data[k].ciudades.length; w++) {
+                            newC += "<option value='" + data[k].ciudades[w] + "'>"
+                            + data[k].ciudades[w] + "</option>";
+                    }
+                }
+        }
+        newC += '</select>'; $("#ciudadN").append(newC);
+    });
+</script>
+                <script src="/js/jquery-3.5.1.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+                    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+                    crossorigin="anonymous"></script>
+                <!-- SweetAlert 2 -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                <script src="/js/registro.js"></script>
+
+</html>

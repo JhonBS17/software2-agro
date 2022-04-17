@@ -1,0 +1,24 @@
+#divContra {
+    width: 400px;
+    border-style: solid ;
+    /* border-color: #; */
+    border-width: 2px;
+    background-color: #e9c893;
+}
+
+body{
+    background-color: #1E392A;
+}
+
+#formContra{
+    width: 320px;
+}
+
+@media screen and (max-width: 500px) {
+    #divContra {
+        width: 85vw;
+    }
+    #formContra {
+        width: 63vw;
+    }
+}

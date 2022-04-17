@@ -1,0 +1,14 @@
+#div_inicio{
+    background-color: white;
+    margin-top: 25%;
+}
+
+#div_texto{
+    margin-top: 20%;
+    margin-right: 15%;
+}
+body {
+    background-image: url("../img/background.gif");
+    background-color: #cccccc;
+    background-size: 100%;
+}

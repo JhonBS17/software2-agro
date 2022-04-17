@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/iconEmp.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/getSample.css">
+    <title>AS Colombia</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-1">
+            <div id="mySidenav" class="show sidenav text-center ">
+                <a href="javascript:void(0)" class="closebtn  " onclick="closeNav()">&#9776;</a>
+                <div class="myItem">
+                    <h4 style="padding-bottom: 30px; color: black;"><b><%= nombre %></b></h4>
+                </div>
+                <div id="divTextNav" class="container text-center myItem">
+                    <a href="/analista/principal"><button type="button" class="btn btn-dark btn-block">Muestras
+                            Asignadas</button></a>
+                    <a href="/analista/resultados"><button type="button" class="btn btn-dark btn-block">Recopilar
+                            Informes</button></a>
+                    <a href="/analista/updateProfile"><button type="button" class="btn btn-dark btn-block">Editar
+                            Perfil</button></a>
+                    <a href="/index/logout"><button type="button" class="btn btn-danger btn-block">Cerrar
+                            Sesión</button></a>
+                </div>
+            </div>
+            <a style="cursor:pointer " id="openbtn" onclick="openNav()"> &#9776;</a>
+        </div>
+        <div class="col-11">
+            <div id="main">
+                <h2 class=" text-center mt-3" style="margin-right: 2.5em;"><strong>Resultados Subidos</strong></h2><br><br>
+                <div class="row" id="filtros">
+                    <div class="col-md-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect"><b>Desde</b></label><br>
+                        <input type="date" id="Fdesde" name="meeting-time" class="form-control"
+                            min="2000-01-01T00:00" max="2030-12-31T00:00"><br>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect"><b>Hasta</b></label><br>
+                        <input type="date" id="Fhasta" name="meeting-time" class="form-control"
+                            min="2000-01-01" max="2030-12-31">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect"><b>Código</b></label><br>
+                        <input id="codigo" type="text" name="meeting-time" style="height: 38%;">
+                    </div>
+                    <div class="col-md-1">
+                        <button onclick="busqF()" class="btn btn-dark" style="margin-top: 73%;">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="spaceCards" class="row" style="margin-top: 30px; width: 90%; margin-left: 4.4%;">
+                    <% if (resultados == null) { %>
+                        <h5 class="mx-auto" style="color: rgb(192, 192, 192)">No se han encontrado resultados</h5>
+                    <% } else {
+                    for (let i = 0; i < resultados.length; i++) { %>
+                        <div class="col-6 container" style="margin-bottom: 16px;">
+                            <div class="card border-success" style="width: 83%; padding: 0;">
+                                <div class="card-header"><b>ID Resultado: </b><%= resultados[i].idResultado %></div>
+                                <div class="card-body text-dark" style="padding-bottom: 0;">
+                                    <p id="analysisCode"><b>Fecha: </b><%= resultados[i].fechaResultado.toString().substring(4, 15) %></p>
+                                    <p id="analysisStatus"><b> ID Muestra: </b><%= resultados[i].idMuestra1 %></p>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    <% } 
+                    }%>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/resultadosAn.js"></script>
+
+</html>

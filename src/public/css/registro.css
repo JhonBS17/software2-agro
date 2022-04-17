@@ -1,0 +1,39 @@
+.divRegistro {
+    width: 400px;
+    border-style: solid ;
+    /* border-color: #; */
+    border-width: 2px;
+    background-color: #e9c893;
+}
+
+#form1 {
+    width: 320px;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 150px;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #1E392A;
+}
+
+.eye1 {
+    background-color: rgb(206, 206, 206);
+    padding: 0.45em;
+}
+
+i {
+    color: black;
+}
+
+@media screen and (max-width: 500px) {
+    .divRegistro {
+        width: 80vw;
+    }
+    #form1 {
+        width: 63vw;
+    }
+}

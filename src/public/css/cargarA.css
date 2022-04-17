@@ -1,0 +1,84 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #E9C893;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #E9C893;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  font-size: 25px;
+  color: black;
+}
+
+#main {
+  transition: margin-left .5s;
+  /* padding: 16px; */
+  margin-left: 130px;
+}
+
+#openbtn {
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+#openbtn:hover {
+  color: #E9C893;
+}
+
+#divTextNav{
+  width: 230px ;
+  margin: 0;
+}
+
+.card{
+padding: 8px 8px 8px 8px;
+
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+#divEditarF {
+width: 58%;
+}
+
+.eye1 {
+  background-color: rgb(206, 206, 206);
+  padding: 0.45em;
+}
+
+i {
+  color: black;
+}
+
+.alert {
+  width: 600px;
+}
+

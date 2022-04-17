@@ -1,0 +1,85 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #E9C893;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  font-size: 25px;
+  color: black;
+}
+
+#main {
+  transition: margin-left .5s;
+  /* padding: 16px; */
+  margin-left: 15%;
+}
+
+#openbtn {
+  padding: 8px 8px 8px 14px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #E9C893;
+  display: block;
+  transition: 0.3s;
+}
+
+#openbtn:hover {
+  color: black;
+}
+
+#divTextNav {
+  width: 230px;
+  margin: 0;
+}
+
+.card {
+  padding: 8px 8px 8px 8px;
+}
+
+@media screen and (max-width: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+  #openbtn {
+    padding-top: 15px;
+  }
+  #openbtn a {
+    font-size: 18px;
+  }
+  #h2Title {
+    font-size: 25px;
+  }
+}
+
+#filtros {
+  width: 80%;
+  margin-left: 6%;
+}
+
+

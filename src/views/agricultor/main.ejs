@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/iconEmp.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>AS Colombia</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-1">
+            <div id="mySidenav" class="show sidenav text-center ">
+                <a href="javascript:void(0)" class="closebtn  " onclick="closeNav()">&#9776;</a>
+                <div class="myItem">
+                    <h5 style="font-size: 20px; padding-bottom: 30px; color: white;"><%= nombreUsuario %></h5>
+                </div>
+                <div id="divTextNav" class="container text-center myItem">
+                    <a href="/agricultor/principal"><button type="button"
+                            class="btn btn-secondary btn-block">Lista de Análisis</button></a>
+                    <a href="/agricultor/requestAnalysis"><button type="button" class="btn btn-secondary btn-block">Solicitar
+                            Análisis</button></a>
+                    <a href="/agricultor/updateProfile"><button type="button"
+                            class="btn btn-secondary btn-block">Editar Perfil</button></a>
+                    <a href="/index/logout"><button type="button" class="btn btn-danger btn-block" style="margin-top: 140%">Cerrar
+                            sesión</button></a>
+                </div>
+            </div>
+            <a style="cursor:pointer " id="openbtn" onclick="openNav()"> &#9776;</a>
+        </div>
+        <div class="col-11">
+            <div id="main">
+                <h2 class=" text-center mt-3"><strong>Tus Análisis de Suelo</strong></h2>
+                <div class="row container" style="margin-top: 30px">
+                    <% if (solicitudes == null && resultados == null) { %>
+                        <h4 class="mx-auto" style="color: rgb(192, 192, 192)">No se han encontrado solicitudes</h4>    
+                    <% }
+                    if (solicitudes != null) {
+                    for (let i = 0; i < solicitudes.length; i++) { %>
+                    <div class="col-6" style="margin-bottom: 16px">
+                        <div class="card flex-row flex-wrap">
+                            <div class="card-header border-0">
+                                <% var color = 'red'; 
+                                if (solicitudes[i].estadoSolicitud == 'Pagado') {
+                                        color = 'orange';
+                                } else if (solicitudes[i].estadoSolicitud == 'Análisis en Proceso') {
+                                        color = 'yellow';
+                                }%>
+                                <img src="https://github.com/JhonBS17/filesSoftware2/blob/main/<%= color %>.jpg?raw=true" alt="">
+                            </div>
+                            <div class="card-block px-4 my-auto">
+                                <p class="card-title" id="idResultado"> <b>ID Solicitud:
+                                    </b><%= solicitudes[i].idSolicitud %></p>
+                                <p class="card-title"> <b>Estado: </b><%= solicitudes[i].estadoSolicitud %></p>
+                                <a href="/agricultor/muestrasAn/<%= solicitudes[i].idSolicitud %>/<%= solicitudes[i].estadoSolicitud %>" class="btn btn-success" style="margin-top: 8px;">Consultar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }}
+                    if (resultados != null) {
+                    for (let i = 0; i < resultados.length; i++) { %>
+                        <div class="col-6" style="margin-bottom: 16px">
+                            <div class="card flex-row flex-wrap">
+                                <div class="card-header border-0">
+                                    <img src="https://github.com/JhonBS17/filesSoftware2/blob/main/green.jpg?raw=true" alt="">
+                                </div>
+                                <div class="card-block px-4 my-auto">
+                                    <p class="card-title" id="idResultado"> <b>ID Resultado:
+                                        </b><%= resultados[i].idResultado %></p>
+                                    <p class="card-title"> <b>Estado: </b>Terminado</p>
+                                    <a href="/agricultor/resultado/<%= resultados[i].idResultado %>"
+                                        class="btn btn-success" style="margin-top: 8px;">Consultar</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }
+                    } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+</html>

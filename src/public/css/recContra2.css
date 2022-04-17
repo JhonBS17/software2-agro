@@ -1,0 +1,32 @@
+#divContra {
+    width: 400px;
+    border-style: solid ;
+    /* border-color: #; */
+    border-width: 2px;
+    background-color: #e9c893;
+}
+#form1{
+
+    width: 320px;
+}
+
+body{
+    background-color: #1E392A;
+}
+
+.eye1 {
+    background-color: rgb(206, 206, 206);
+    padding: 0.45em;
+}
+
+i {
+    color: black;
+}
+@media screen and (max-width: 500px) {
+    #divContra {
+        width: 85vw;
+    }
+    #form1 {
+        width: 63vw;
+    }
+}

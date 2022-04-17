@@ -1,0 +1,33 @@
+#div_inicioSesion{
+    width: 400px;
+    background-color:#e9c893;
+}
+
+#div_texto{
+    margin-top: 20%;
+}
+
+#inicioSesion{
+    margin: -50%;
+}
+
+#div_mailpass{
+    text-align: left;
+}
+
+.eye1 {
+    background-color: rgb(206, 206, 206);
+    padding: 0.45em;
+}
+
+.alert {
+    width: 600px;
+}
+
+i {
+    color: black;
+}
+
+#message {
+    width: 400px;
+}
